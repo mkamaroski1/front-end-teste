@@ -3,6 +3,7 @@
     <v-card-text>
       <v-form>
         <v-text-field v-model="address.cep" label="CEP" required @blur="fetchAddress"></v-text-field>
+        <v-alert v-if="error" type="error" dense>{{ error }}</v-alert>
         <v-text-field v-model="address.logradouro" label="Logradouro" required :disabled="editMode"></v-text-field>
         <v-text-field v-model="address.complemento" label="Complemento" :disabled="editMode"></v-text-field>
         <v-text-field v-model="address.bairro" label="Bairro" required :disabled="editMode"></v-text-field>
@@ -16,7 +17,6 @@
     </v-card-actions>
   </v-card>
 </template>
-
 
 <script>
 import axios from 'axios';
@@ -33,10 +33,12 @@ export default {
         localidade: '',
         uf: '',
       },
+      error: '', 
     };
   },
   methods: {
     async fetchAddress() {
+      this.error = ''; 
       if (this.address.cep) {
         try {
           const response = await axios.get(`/api/ws/${this.address.cep}/json/`);
@@ -47,11 +49,10 @@ export default {
             this.address.localidade = response.data.localidade;
             this.address.uf = response.data.uf;
           } else {
-            alert('CEP não encontrado!');
+            this.error = 'CEP não encontrado!';
           }
         } catch (error) {
-          console.error('Erro ao buscar o CEP:', error);
-          alert('Erro ao buscar o CEP.');
+          this.error = 'Erro ao buscar o CEP.';
         }
       }
     },
@@ -77,11 +78,11 @@ export default {
         localidade: '',
         uf: '',
       };
+      this.error = ''; 
     },
   },
 };
 </script>
-
 
 <style>
 .v-card {

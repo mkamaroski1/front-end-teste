@@ -2,17 +2,10 @@
   <v-container fluid>
     <v-row justify="center">
       <v-col cols="12" md="8">
-        <div class="d-flex justify-space-between align-center mb-4 topbar">
-          <v-toolbar-title>{{ $t('registerAddress') }}</v-toolbar-title>
+        <div class="d-flex justify-end align-center mt-4 topbar">
           <v-dialog v-model="dialog" max-width="600px">
             <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                color="primary"
-                dark
-                v-bind="attrs"
-                v-on="on"
-                large
-              >
+              <v-btn color="primary" dark v-bind="attrs" v-on="on" large>
                 {{ $t('new') }}
               </v-btn>
             </template>
@@ -24,19 +17,16 @@
           :items="formattedAddresses"
           class="elevation-1 mobile-row-spacing"
         >
+        <template v-slot:top>
+            <v-toolbar flat>
+              <v-toolbar-title>{{ $t('registerAddress') }}</v-toolbar-title>
+            </v-toolbar>
+          </template>
           <template v-slot:item.actions="{ item, index }">
-            <v-icon
-              medium
-              class="blue--text mx-2"
-              @click="startEditAddress(item, index)"
-            >
+            <v-icon medium class="blue--text mx-2" @click="startEditAddress(item, index)">
               mdi-pencil
             </v-icon>
-            <v-icon
-              medium
-              class="red--text mx-2"
-              @click="openDeleteDialog(index)"
-            >
+            <v-icon medium class="red--text mx-2" @click="openDeleteDialog(index)">
               mdi-delete
             </v-icon>
           </template>
@@ -130,17 +120,7 @@ export default {
 
 <style>
 .mobile-row-spacing .v-data-table__wrapper tr {
-  padding: 8px 0; 
-}
-
-@media (max-width: 600px) {
-  .mobile-row-spacing .v-data-table__wrapper tr {
-    padding: 16px 0; 
-  }
-}
-
-.text-center {
-  text-align: center;
+  padding: 8px 0;
 }
 
 .topbar {
