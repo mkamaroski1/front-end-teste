@@ -74,7 +74,7 @@ Para configurar o projeto em seu ambiente local, siga os passos abaixo:
 Todos os componentes foram testados utilizando Jest. Os testes abrangem a renderização correta dos componentes, a interação com o usuário e a verificação das ações e mutações do Vuex.
 
 ## Estilos
-Estilos Este projeto utiliza o Vuetify para estilização e componentes UI. Vuetify é uma biblioteca de componentes Material Design para Vue.js, que facilita a criação de interfaces bonitas e responsivas.
+Estilos Este projeto utiliza o Vuetify para estilização e componentes UI.
 
 Para mais informações sobre os componentes do Vuetify e como utilizá-los, consulte a documentação oficial do Vuetify.
 
