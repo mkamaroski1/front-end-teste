@@ -41,6 +41,7 @@ Para configurar o projeto em seu ambiente local, siga os passos abaixo:
 - `npm run serve`: Inicia o servidor de desenvolvimento.
 - `npm run build`: Compila a aplicação para produção.
 - `npm run lint`: Executa o linting nos arquivos do projeto.
+- `npm run test`: Executa os testes unitários com Jest.
 
 ## Estrutura do Projeto
 
@@ -56,14 +57,21 @@ Para configurar o projeto em seu ambiente local, siga os passos abaixo:
 │   └── index.js # configuração do Vue I18n
 ├── router
 │   └── index.js # configuração do Vue Router
-└── store
-    ├── index.js          # onde montamos os módulos e exportamos o store
-    ├── actions.js        # ações raiz
-    ├── mutations.js      # mutações raiz
-    └── modules
-        ├── addresses.js  # módulo para gerenciamento de endereços
-
+├── store
+│   ├── index.js          # onde montamos os módulos e exportamos o store
+│   ├── actions.js        # ações raiz
+│   ├── mutations.js      # mutações raiz
+│   └── modules
+│       └── addresses.js  # módulo para gerenciamento de endereços
+└── tests
+    ├── unit
+        ├── AddressForm.spec.js
+        └── RegisterAddress.spec.js
+        └── AddressList.spec.js
 ```
+
+## Estrutura dos Testes
+Todos os componentes foram testados utilizando Jest. Os testes abrangem a renderização correta dos componentes, a interação com o usuário e a verificação das ações e mutações do Vuex.
 
 ## Estilos
 Estilos Este projeto utiliza o Vuetify para estilização e componentes UI. Vuetify é uma biblioteca de componentes Material Design para Vue.js, que facilita a criação de interfaces bonitas e responsivas.

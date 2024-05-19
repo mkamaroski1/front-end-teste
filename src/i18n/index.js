@@ -25,6 +25,7 @@ const messages = {
     recentAddresses:'Endereços Recentes',
     registerAddress: 'Cadastrar Endereço',
     home: 'Home',
+    
   },
 };
 
